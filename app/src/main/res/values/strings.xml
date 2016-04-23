@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WOL beta</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="host_mac_address">MAC-address</string>
+    <string name="IP">host IP if host isn\'t local</string>
+     <string name="auto_send">auto send on boot</string>
+    <string name="auto_close">auto close on boot</string>
+    <string name="sec_to_close">Seconds to close(default=5)</string>
+    <string name="send_button">Send Magic-Package</string>
+    <string name="second_thread_exterminate">Second thread exterminated</string>
+    <string name="sending_magic_package">Sending magic package!!! :)</string>
+    <string name="magic_packages_sended">Magic_packages_sended!!! :)</string>
+
+
+
+</resources>

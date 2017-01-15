@@ -88,6 +88,8 @@ public class Send_Magic_Package extends Thread {
 
             Mac = mainactivity.MAC_address.getText().toString();
             ip = mainactivity.IP_or_domain.getText().toString();
+            String [] ip_port = ip.split ( ":" );
+        
 
             byte [] Magic_package = new byte[102];
             byte [] MAC = new byte [6];
@@ -105,13 +107,21 @@ public class Send_Magic_Package extends Thread {
 
             
             
-            if(ip.isEmpty()) {
-
-                serv_addr = new InetSocketAddress("255.255.255.255" , 48888);
-            }
-            else serv_addr = new InetSocketAddress (ip, 48888);
+            
 
             DatagramSocket sock = new DatagramSocket();
+            if(ip.isEmpty()) {
+                sock.setBroadcast ( true );
+                serv_addr = new InetSocketAddress("255.255.255.255" , 48888);
+            }
+            else {
+                if(ip_port.length>=2)
+                    serv_addr = new InetSocketAddress ( ip_port[0], 
+                                                        Integer.valueOf ( ip_port[1] ) );
+                else if(ip_port.length==1)
+                    serv_addr = new InetSocketAddress ( ip_port[0], 48888 );
+                else serv_addr = new InetSocketAddress("255.255.255.255" , 48888);
+            }
             
             LOG(serv_addr.getHostName ());
             DatagramPacket pack = new DatagramPacket(Magic_package, Magic_package.length, serv_addr);

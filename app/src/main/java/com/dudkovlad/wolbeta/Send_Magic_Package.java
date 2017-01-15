@@ -1,34 +1,10 @@
 package com.dudkovlad.wolbeta;
 
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.EditText;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.CheckBox;
-import android.content.res.Resources;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.Toast;
-import android.view.View;
-import android.widget.Button;
-import android.view.View.OnClickListener;
-import android.widget.Switch;
-import android.view.Gravity;
-import android.content.Context;
-import java.net.InetAddress;
-import java.net.DatagramSocket;
-import java.net.DatagramPacket;
-import android.os.Looper;
-import android.os.Handler;
 import android.os.Message;
-import java.net.InterfaceAddress;
-import java.util.Enumeration;
-import java.net.NetworkInterface;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 /**
  * Created by vlad on 26.07.2014.
@@ -126,17 +102,20 @@ public class Send_Magic_Package extends Thread {
             {
                 Magic_package[i] = MAC[i%6];
             }
+
+            
+            
             if(ip.isEmpty()) {
 
-                serv_addr = new InetSocketAddress("255.255.255.255" , 2304);
+                serv_addr = new InetSocketAddress("255.255.255.255" , 48888);
             }
-            else serv_addr = new InetSocketAddress (ip, 2304);
+            else serv_addr = new InetSocketAddress (ip, 48888);
 
             DatagramSocket sock = new DatagramSocket();
-            sock.setBroadcast(true);
-
+            
+            LOG(serv_addr.getHostName ());
             DatagramPacket pack = new DatagramPacket(Magic_package, Magic_package.length, serv_addr);
-
+            LOG(pack.getPort () + "\n");
 
             for (int i = 5; i > 0; i--) {
 

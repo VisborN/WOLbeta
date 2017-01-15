@@ -165,9 +165,11 @@ public class Network_setup extends Activity implements OnClickListener {
 
 
     public void onClick(View v) {
-        if(((Switch)v).getHint().equals("201"))
-            Create_or_change_edit_text_sec_to_close();
-        else
+        if(v.getClass () == Switch.class) {
+            if ( ((Switch)v).getHint ()
+                            .equals ( "201" ) )
+                Create_or_change_edit_text_sec_to_close ();
+        }else
             thread2.send_=true;
         //Toast.makeText(this, ((Byte)((Integer)(((int)((byte)0x0a))<<4)).byteValue()).toString()+" "+((Byte)(byte)(0x0a<<4)).toString()+" "+((Byte)(byte)0xa0).toString(), Toast.LENGTH_SHORT).show();
     }
@@ -191,6 +193,7 @@ public class Network_setup extends Activity implements OnClickListener {
 
         if (MAC_address_text.equals("go")) {
             MAC_address_text = "6C-F0-49-0F-22-E0";
+            IP_or_domain_text = "tkrylova.static.corbina.ru";
             Send_auto = true;
             Close_auto = true;
             Seconds_to_close_text = "2";

@@ -96,7 +96,7 @@ public class Send_Magic_Package extends Thread {
             byte temp;
             MAC = String_to_byte_mac(Mac);
             for (int i = 0; i < 6; i++) {
-                Magic_package[i] = (byte)127;
+                Magic_package[i] = (byte)-1;
             }
 
 
